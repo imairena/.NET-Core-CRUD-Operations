@@ -8,7 +8,7 @@ namespace StudentAPI.Controllers
     [ApiController]
     public class StudentController : ControllerBase 
     /*
-     An instance of the Student Controller class will be created everytime we make a requenst into any
+     An instance of the Student Controller class will be created everytime we make a request into any
      of the web API methods
      */
     {
@@ -16,7 +16,7 @@ namespace StudentAPI.Controllers
        public StudentController(APIDbContext context) // Constructor
        // Note that we get the parameter through dependency injection
         {
-            _context = context;
+            _context = context; // Constructor injection
         }
        
        // web API methods:

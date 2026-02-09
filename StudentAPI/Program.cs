@@ -13,7 +13,7 @@ builder.Services.AddControllers(); // Use controllers to handle web requests
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Dependency Injection of DbContext Class (how to communicate with the database)
+// Dependency Injection of DbContext Class
 builder.Services.AddDbContext<APIDbContext>(options => // Method to create instances of DbContext class
     options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection"))); 
 
