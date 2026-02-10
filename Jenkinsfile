@@ -4,6 +4,8 @@ pipeline {
     environment {
         // Path to your solution file
         SOLUTION_PATH = 'StudentAPI.sln'
+        // Explicitly defining dotnet path to avoid "command not found" errors
+        DOTNET_CLI = '/usr/local/share/dotnet/dotnet'
     }
 
     stages {
@@ -19,7 +21,7 @@ pipeline {
             steps {
                 echo 'Restoring NuGet packages...'
                 // Restores dependencies defined in the solution file
-                sh "dotnet restore ${SOLUTION_PATH}"
+                sh "${DOTNET_CLI} restore ${SOLUTION_PATH}"
             }
         }
 
@@ -27,7 +29,7 @@ pipeline {
             steps {
                 echo 'Building solution...'
                 // Builds the project in Release configuration without restoring again
-                sh "dotnet build ${SOLUTION_PATH} --configuration Release --no-restore"
+                sh "${DOTNET_CLI} build ${SOLUTION_PATH} --configuration Release --no-restore"
             }
         }
 
@@ -36,7 +38,7 @@ pipeline {
                 echo 'Running Unit Tests...'
                 // Executes all tests in the solution. 
                 // --no-build ensures we test exactly what we just built.
-                sh "dotnet test ${SOLUTION_PATH} --no-build --configuration Release --verbosity normal"
+                sh "${DOTNET_CLI} test ${SOLUTION_PATH} --no-build --configuration Release --verbosity normal"
             }
         }
     }
