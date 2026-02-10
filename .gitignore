@@ -1,0 +1,7 @@
+# Standard .gitignore for .NET
+[Oo]bj/
+[Bb]in/
+.idea/
+.vs/
+*.user
+*.suo
